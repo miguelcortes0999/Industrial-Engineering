@@ -6,7 +6,7 @@ import tqdm as tq
 import numpy as np
 
 #Creacion de clase
-class Scheduling():
+class Secuenciacion():
     #Inicializar variables
     def __init__(self,Nom_Maq,Nom_Tar,Dur_Tar,Sec_Maq,**kwargs):
         self.nombre_maq=Nom_Maq
@@ -135,11 +135,11 @@ class Scheduling():
         loop.close()
 
 # imprimir matriz ordenada
-def print_straight(arreglo2D):
+def print_filas(arreglo2D):
     for ren in arreglo2D:
         print(ren)
 
-#Base 1
+#Base 
 '''
 nombre_maq=('M1','M2','M3','M4')
 nombre_tar=('T1','T2','T3','T4','T5','T6','T7','T8')
@@ -164,23 +164,17 @@ sec_maquinas=(
     ('M3','M4','M1','M2'))
 '''  
 
-#Base 2
-nombre_maq=('M1','M2','M3')
-nombre_tar=('T1','T2','T3','T4')
-duedates=(500,500,500,500)
-duracion_tareas=(
-    (12,5,13),
-    (6,10,3),
-    (9,11,18),
-    (17,16,4))
-sec_maquinas=(
-    ('M1','M2','M3'),
-    ('M1','M2','M3'),
-    ('M1','M2','M3'),
-    ('M1','M2','M3'))
+#Crear objeto
+'''Modelo=Secuenciacion(nombre_maq,nombre_tar,duracion_tareas,sec_maquinas)'''
 
-Modelo=Scheduling(nombre_maq,nombre_tar,duracion_tareas,sec_maquinas)
-Modelo.Calular_Mej_Makespan()
-print(Modelo.mejor_makespan)
-print([nombre_tar[n_tar] for n_tar in Modelo.mejor_secuencia])
-print(print_straight(Modelo.mejor_programacion))
+#Con objeto calcular mejor makesapn
+'''Modelo.Calular_Mej_Makespan()'''
+
+#Mostrar el mejor makesapan posible
+'''print(Modelo.mejor_makespan)'''
+
+#Mostrar el orden de tareas a secuenciar
+'''print([nombre_tar[n_tar] for n_tar in Modelo.mejor_secuencia])'''
+
+#Mostrar la progrmacion de tareas
+'''print(print_filas(Modelo.mejor_programacion))'''
