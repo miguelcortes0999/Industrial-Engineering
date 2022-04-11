@@ -6,5 +6,6 @@ Se planea hacer uso de todo el texto comentando en español debido a la dificult
 
 Esta estara dividia por modulos de:
 
--Pronosticos de Producción
--Optimización de la Producción
+*-Pronosticos de Producción*
+
+*-Optimización de la Producción*
