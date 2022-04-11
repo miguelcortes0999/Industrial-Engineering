@@ -1,6 +1,11 @@
-from re import A
+#Improtar librerias necesarias
+from os import system
+import pandas as pd
+import itertools as it
+import tqdm as tq
+import numpy as np
 
-
+#Creacion de clase
 class Scheduling():
     #Inicializar variables
     def __init__(self,Nom_Maq,Nom_Tar,Dur_Tar,Sec_Maq,**kwargs):
@@ -173,14 +178,6 @@ sec_maquinas=(
     ('M1','M2','M3'),
     ('M1','M2','M3'),
     ('M1','M2','M3'))
-
-#Improtar librerias necesarias
-from os import system
-import pandas as pd
-import itertools as it
-import tqdm as tq
-from os import system
-import numpy as np
 
 Modelo=Scheduling(nombre_maq,nombre_tar,duracion_tareas,sec_maquinas)
 Modelo.Calular_Mej_Makespan()
