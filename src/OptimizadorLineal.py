@@ -1,21 +1,26 @@
 from math import round
 
-class Perfiles:
+class InventarioPerfiles:
     def __init__(self, cantidades, medidas, tipos=False):
+        '''
+        parametros: cantidades:List medidas:list opcional( tipos:lista )
+        accion: Creación de inventario por tipo perfil
+        returns: None
+        '''
         #verificación de argumento de tipos
         if tipos==False:
             self.tipos_i=['Ref' for n in cantidades]
         else:
-            #verificacion de tamaño de listas
+            #verificación de tamaño de listas
             if len(cantidades)==len(tipos):
                 self.tipos_i=tipos
             else:
                 print('\tERROR longitud de listas de distintos tamaños')
-        #verificacion de tamaño de listas
+        #verificación de tamaño de listas
         if len(cantidades)==len(medidas):
             self.cantidades_i=cantidades
             self.medidas_i=medidas
-            #creacion de inventario
+            #creación de inventario
             self.inventario=[]
             for n,cantidad in enumerate(self.cantidades_i):
                 for m in range(cantidad):
@@ -24,18 +29,23 @@ class Perfiles:
             print('\tERROR longitud de listas de distintos tamaños')
 
     def Requerimientos(self, cantidades, medidas, tipos=False):
-        #verificación de argumento de tipos
+        '''
+        parametros: cantidades:List medidas:list opcional( tipos:lista )
+        accion: Creacion de requerimeintos por tipo perfil
+        returns: None
+        '''
+        #verificación de opcion varaibel tipos
         if tipos==False:
             self.tipos_r=['Ref' for n in cantidades]
         else:
-            #verificacion de tamañao de listas
+            #verificación de tamañao de listas
             if len(cantidades)==len(tipos):
                 self.tipos_r=tipos
-        #verificacion de tamaño de listas
+        #verificación de tamaño de listas
         if len(cantidades)==len(medidas):        
             self.cantidades_r=cantidades
             self.medidas_r=medidas
-            #creacion de requerimientos
+            #creación de requerimientos
             self.requerimiento=[]
             for n,cantidad in enumerate(self.cantidades_r):
                 for m in range(cantidad):
@@ -44,7 +54,11 @@ class Perfiles:
             print('\tERROR longitud de listas de distintos tamaños')
     
     def Optimizar_2D(self, ancho_corte=0):
-        #Organizar de amyor a menor para aplicacion de algortimo de optimizacion
+        '''
+        parametros: opcional( ancho_corte:float )
+        acccion: Organizar de amyor a menor para aplicacion de algortimo de optimizacion
+        returns: Asginacion de perfiles requeridos a cada perfil en inventario segun tipo
+        '''
         self.inventario=sorted(self.inventario, key=lambda x: x[0],reverse=True)
         self.requerimiento=sorted(self.requerimiento, key=lambda x: x[0],reverse=True)
         self.faltantes=[]
@@ -77,15 +91,19 @@ class Perfiles:
             self.asignacion+=inventarios
         return self.asignacion
 
-#funcion par aimprimir escalonado
 def print_straight(array):
+    '''
+    params: array:list()
+    acccion: Imprimir de forma ordenada objetos del array
+    returns: None
+    '''
     for row in array:
         print(row)  
     print('\n')
 
 '''
 #Base 1
-#Objeto.Perfiles
+#Objeto.InventarioPerfiles
 cantidades_i=[5,2,1]
 medidas_i=[250.0,600.0,150.0]
 #variable opcional en caso de multiples tipos
@@ -103,7 +121,7 @@ tipos_r=['Ref 744','Ref 8025','Ref 744']
 ancho_corte=0.4
 
 #creacion de modelo de optimizacion corte lineal con grosor
-Objeto=Perfiles(cantidades_i,medidas_i,tipos_i)
+Objeto=InventarioPerfiles(cantidades_i,medidas_i,tipos_i)
 Objeto.Requerimientos(cantidades_r,medidas_r,tipos_r)
 Objeto.Optimizar_2D(ancho_corte)
 print_straight(Objeto.inventario)
